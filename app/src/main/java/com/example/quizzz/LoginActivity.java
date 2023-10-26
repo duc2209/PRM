@@ -1,5 +1,6 @@
 package com.example.quizzz;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -55,6 +56,33 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void login(){
+        String enteredEmail = email.getText().toString();
+        String enteredPassword = pass.getText().toString();
 
+        if (isLoginSuccessful(enteredEmail, enteredPassword)) {
+            // Đăng nhập thành công, điều hướng đến trang MainActivity
+            startActivity(new Intent(LoginActivity.this, MainActivity.class));
+            finish();
+        } else {
+            showLoginFailedDialog();
+        }
     }
+
+    private boolean isLoginSuccessful(String email, String password) {
+        return "admin".equals(email) && "admin".equals(password);
+    }
+
+    private void showLoginFailedDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Đăng nhập thất bại")
+                .setMessage("Sai email hoặc mật khẩu. Vui lòng thử lại.")
+                .setPositiveButton("OK", null);
+
+        AlertDialog dialog = builder.create();
+        dialog.show();
+    }
+
+
+
+
 }
