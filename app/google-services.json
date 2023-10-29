@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "77248184055",
+    "project_id": "exampractice-cff6e",
+    "storage_bucket": "exampractice-cff6e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:77248184055:android:f4ea83cd37c55bb4719df2",
+        "android_client_info": {
+          "package_name": "com.example.quizzz"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDGRrZkp9ipB73mp0uKMXfgazxZnQ5b7Mc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
