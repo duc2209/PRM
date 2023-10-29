@@ -1,5 +1,6 @@
 package com.example.quizzz;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,13 +30,22 @@ public class CategoryAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, ViewGroup parent) {
         View myView = null;
         if(convertView == null){
             myView = LayoutInflater.from(parent.getContext()).inflate(R.layout.cat_item_layout,parent,false);
         }else {
             myView = convertView;
         }
+
+        myView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(view.getContext(), TestActivity.class);
+                intent.putExtra("CAT_INDEX", position);
+                view.getContext().startActivity(intent);
+            }
+        });
 
         TextView carName = myView.findViewById(R.id.catName);
         TextView noOfTests = myView.findViewById(R.id.no_of_tests);
