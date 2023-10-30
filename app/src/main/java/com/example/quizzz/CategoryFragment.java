@@ -28,7 +28,7 @@ public class CategoryFragment extends Fragment {
     private String mParam1;
     private String mParam2;
     private GridView catView    ;
-    private List<CategoryModel> catList = new ArrayList<>();
+    public static List<CategoryModel> catList = new ArrayList<>();
 
     public CategoryFragment() {
         // Required empty public constructor
