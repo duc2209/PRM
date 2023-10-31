@@ -9,12 +9,17 @@ import android.os.Bundle;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.lang.reflect.Type;
 
 public class SplashActivity extends AppCompatActivity {
 
     private TextView appName;
+    private FirebaseAuth mAuth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,6 +32,10 @@ public class SplashActivity extends AppCompatActivity {
         Animation anim = AnimationUtils.loadAnimation(this, R.anim.myanim);
         appName.setAnimation(anim);
 
+        mAuth = FirebaseAuth.getInstance();
+
+        DbQuery.g_frirestore = FirebaseFirestore.getInstance();
+
         new Thread(){
            @Override
             public void run(){
@@ -35,9 +44,30 @@ public class SplashActivity extends AppCompatActivity {
                }catch (InterruptedException e){
                    e.printStackTrace();
                }
-               Intent intent = new Intent(SplashActivity.this, LoginActivity.class);
-               startActivity(intent);
-               SplashActivity.this.finish();
+               if(mAuth.getCurrentUser() != null){
+                   DbQuery.loadCategoties(new MyCompleteListener() {
+                       @Override
+                       public void onSuccess() {
+                           Intent intent = new Intent(SplashActivity.this, MainActivity.class);
+                           startActivity(intent);
+                           SplashActivity.this.finish();
+                       }
+
+                       @Override
+                       public void onFailure() {
+                           Toast.makeText(SplashActivity.this,"Something wnet wrong! Please Try Again Later!", Toast.LENGTH_SHORT).show();
+
+
+                       }
+                   });
+
+               }else {
+                   Intent intent = new Intent(SplashActivity.this, LoginActivity.class);
+                   startActivity(intent);
+                   SplashActivity.this.finish();
+               }
+
+
            }
         }.start();
     }

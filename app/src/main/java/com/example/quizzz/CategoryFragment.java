@@ -27,7 +27,7 @@ public class CategoryFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-    private GridView catView    ;
+    private GridView catView;
     public static List<CategoryModel> catList = new ArrayList<>();
 
     public CategoryFragment() {
@@ -67,18 +67,18 @@ public class CategoryFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_category,container,false);
         catView = view.findViewById(R.id.cat_Gird);
 
-        loadCategories();
-        CategoryAdapter adapter = new CategoryAdapter(catList);
+        //loadCategories();
+        CategoryAdapter adapter = new CategoryAdapter(DbQuery.g_catList);
         catView.setAdapter(adapter);
         return view;
     }
 
-    private void loadCategories(){
-        catList.clear();
-        catList.add(new CategoryModel("1","GK",20));
-        catList.add(new CategoryModel("2","HISTORY",30));
-        catList.add(new CategoryModel("3","ENGLISH",10));
-        catList.add(new CategoryModel("4","SCIENCE",25));
-        catList.add(new CategoryModel("5","MATHS",20));
-    }
+//    private void loadCategories(){
+//        catList.clear();
+//        catList.add(new CategoryModel("1","GK",20));
+//        catList.add(new CategoryModel("2","HISTORY",30));
+//        catList.add(new CategoryModel("3","ENGLISH",10));
+//        catList.add(new CategoryModel("4","SCIENCE",25));
+//        catList.add(new CategoryModel("5","MATHS",20));
+//    }
 }

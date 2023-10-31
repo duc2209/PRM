@@ -1,26 +1,44 @@
 {
   "project_info": {
-    "project_number": "77248184055",
-    "project_id": "exampractice-cff6e",
-    "storage_bucket": "exampractice-cff6e.appspot.com"
+    "project_number": "689357733584",
+    "project_id": "exampractice-e2d1b",
+    "storage_bucket": "exampractice-e2d1b.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:77248184055:android:f4ea83cd37c55bb4719df2",
+        "mobilesdk_app_id": "1:689357733584:android:bb510baab680a27fc7a8d5",
         "android_client_info": {
           "package_name": "com.example.quizzz"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "689357733584-7a4bfjit134n56tho2lvfg7d1021qok5.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.quizzz",
+            "certificate_hash": "afa4ca59fa38c49378e0d1008a976933090eacc4"
+          }
+        },
+        {
+          "client_id": "689357733584-kc6kduomek33f6nogj5cpl9t83m0vhg0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
-          "current_key": "AIzaSyDGRrZkp9ipB73mp0uKMXfgazxZnQ5b7Mc"
+          "current_key": "AIzaSyBovRb2JpU3h5FU7MJjvusRhIn9NxPa9Eg"
         }
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "689357733584-kc6kduomek33f6nogj5cpl9t83m0vhg0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }
