@@ -25,7 +25,39 @@ public class DbQuery {
     //FirebaseFirestore db = FirebaseFirestore.getInstance();
     public static FirebaseFirestore g_frirestore;
     public static List<CategoryModel> g_catList = new ArrayList<>();
+    public static ProfileModel myProfile = new ProfileModel("NA",null);
+    public static void getUserData(final MyCompleteListener completeListener){
+        g_frirestore.collection("USERS").document(FirebaseAuth.getInstance().getUid())
+                .get()
+                .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                    @Override
+                    public void onSuccess(DocumentSnapshot documentSnapshot) {
+                        myProfile.setName(documentSnapshot.getString("NAME"));
+                        myProfile.setEmail(documentSnapshot.getString("EMAIL_ID"));
+                        completeListener.onSuccess();
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        completeListener.onFailure();
+                    }
+                });
+    }
 
+    public static void loadData(final MyCompleteListener completeListener){
+        loadCategoties(new MyCompleteListener() {
+            @Override
+            public void onSuccess() {
+                getUserData(completeListener);
+            }
+
+            @Override
+            public void onFailure() {
+                completeListener.onFailure();
+            }
+        });
+    }
     public static int g_select_cat_index = 0;
     public static List<TestModel> g_testList = new ArrayList<>();
     public static void createUserData(String email, String name, String pass,final MyCompleteListener completeListener){

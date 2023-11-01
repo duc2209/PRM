@@ -116,7 +116,7 @@ public class LoginActivity extends AppCompatActivity {
                             // Sign in success, update UI with the signed-in user's information
                             Toast.makeText(LoginActivity.this, "Login Success", Toast.LENGTH_SHORT).show();
 
-                            DbQuery.loadCategoties(new MyCompleteListener() {
+                            DbQuery.loadData(new MyCompleteListener() {
                                 @Override
                                 public void onSuccess() {
                                     progressDialog.dismiss();
