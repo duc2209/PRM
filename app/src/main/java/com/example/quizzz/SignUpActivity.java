@@ -104,7 +104,7 @@ public class SignUpActivity extends AppCompatActivity {
                             // Sign in success, update UI with the signed-in user's information
                             Toast.makeText(SignUpActivity.this, "Sign Up Successfull",Toast.LENGTH_SHORT).show();
 
-                            DbQuery.createUserData(emailStr,nameStr, new MyCompleteListener() {
+                            DbQuery.createUserData(emailStr,nameStr,passStr, new MyCompleteListener() {
                                 @Override
                                 public void onSuccess() {
                                     progressDialog.dismiss();

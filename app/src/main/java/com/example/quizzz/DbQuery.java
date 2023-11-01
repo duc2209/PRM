@@ -28,10 +28,11 @@ public class DbQuery {
 
     public static int g_select_cat_index = 0;
     public static List<TestModel> g_testList = new ArrayList<>();
-    public static void createUserData(String email, String name,final MyCompleteListener completeListener){
+    public static void createUserData(String email, String name, String pass,final MyCompleteListener completeListener){
         Map<String, Object> userData =  new ArrayMap<>();
         userData.put("EMAIL_ID", email);
         userData.put("NAME", name);
+        userData.put("PASS", pass);
         userData.put("TOTAL_SCORE", 0);
 
         DocumentReference userDoc = g_frirestore.collection("USERS").document(FirebaseAuth.getInstance().getCurrentUser().getUid());
