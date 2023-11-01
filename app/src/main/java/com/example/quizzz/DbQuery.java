@@ -151,4 +151,42 @@ public class DbQuery {
                     }
                 });
     }
+
+    public static int g_selected_test_index = 0;
+
+    public static List<QuestionModel> g_quesList = new ArrayList<>();
+    public static void loadquestions(MyCompleteListener completeListener)
+    {
+        g_quesList.clear();
+        g_frirestore.collection("Questions")
+                .whereEqualTo("CATEGORY",g_catList.get(g_select_cat_index).getDocId())
+                .whereEqualTo("TEST",g_testList.get(g_selected_test_index).getTestID())
+                .get()
+                .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                    @Override
+                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+
+                        for(DocumentSnapshot doc: queryDocumentSnapshots )
+                        {
+                            g_quesList.add(new QuestionModel(
+                                    doc.getString("QUEST"),
+                                    doc.getString("A"),
+                                    doc.getString("B"),
+                                    doc.getString("C"),
+                                    doc.getString("D"),
+                                    doc.getLong("ANSWER").intValue()
+                            ));
+                        }
+                        completeListener.onSuccess();
+                    }
+
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        completeListener.onFailure();
+                    }
+                });
+    }
+
 }
