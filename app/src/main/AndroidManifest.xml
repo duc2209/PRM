@@ -12,9 +12,21 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme1">
         <activity
+            android:name=".StartTestActivity"
+            android:exported="false" />
+        <activity
+            android:name=".StartActivity"
+            android:exported="false"
+            android:label="@string/title_activity_start"
+            android:theme="@style/AppTheme1" />
+        <activity
+            android:name=".ui.StartActivity"
+            android:exported="false"
+            android:label="@string/title_activity_start"
+            android:theme="@style/AppTheme1" />
+        <activity
             android:name=".SignUpActivity"
             android:exported="false" />
-
         <activity
             android:name=".TestActivity"
             android:exported="false" />
