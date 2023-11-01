@@ -12,9 +12,14 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme1">
         <activity
+            android:name=".StartTestActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.StartTestActivity"
+            android:exported="false" />
+        <activity
             android:name=".SignUpActivity"
             android:exported="false" />
-
         <activity
             android:name=".TestActivity"
             android:exported="false" />
