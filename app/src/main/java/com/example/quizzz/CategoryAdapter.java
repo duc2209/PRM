@@ -7,6 +7,11 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+import com.example.quizzz.DbQuery;
+import com.example.quizzz.Models.CategoryModel;
+import com.example.quizzz.R;
+import com.example.quizzz.TestActivity;
+
 import java.util.List;
 
 public class CategoryAdapter extends BaseAdapter {

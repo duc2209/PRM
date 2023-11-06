@@ -4,6 +4,11 @@ import android.util.ArrayMap;
 
 import androidx.annotation.NonNull;
 
+import com.example.quizzz.Models.CategoryModel;
+import com.example.quizzz.Models.ProfileModel;
+import com.example.quizzz.Models.QuestionModel;
+import com.example.quizzz.Models.RankModel;
+import com.example.quizzz.Models.TestModel;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -26,6 +31,7 @@ public class DbQuery {
     public static FirebaseFirestore g_frirestore;
     public static List<CategoryModel> g_catList = new ArrayList<>();
     public static ProfileModel myProfile = new ProfileModel("NA",null);
+    public  static RankModel myPerformance = new RankModel(0,-1);
     public static final int NOT_VISITED = 0;
     public static final int UNANSWERED = 1;
     public static final int ANSWERED = 2;
@@ -39,6 +45,8 @@ public class DbQuery {
                     public void onSuccess(DocumentSnapshot documentSnapshot) {
                         myProfile.setName(documentSnapshot.getString("NAME"));
                         myProfile.setEmail(documentSnapshot.getString("EMAIL_ID"));
+
+                        myPerformance.setScore(documentSnapshot.getLong("TOTAL_SCORE").intValue());
                         completeListener.onSuccess();
                     }
                 })
@@ -97,6 +105,35 @@ public class DbQuery {
                     }
                 });
     }
+
+    public static void saveResult(int score,MyCompleteListener completeListener){
+        WriteBatch batch = g_frirestore.batch();
+        DocumentReference userDoc = g_frirestore.collection("USERS").document(FirebaseAuth.getInstance().getUid());
+        batch.update(userDoc,"TOTAL_SCORE",score);
+        if (score > g_testList.get(g_selected_test_index).getTopScore()){
+            DocumentReference scoreDoc = userDoc.collection("USER_DATA").document("MY_SCORES");
+            batch.update(scoreDoc,g_testList.get(g_selected_test_index).getTestID(),score);
+
+        }
+        batch.commit()
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void unused) {
+                if (score > g_testList.get(g_selected_test_index).getTopScore()){
+                    g_testList.get(g_selected_test_index).setTopScore(score);
+                }
+                myPerformance.setScore(score);
+                completeListener.onSuccess();
+            }
+        })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                completeListener.onFailure();
+                    }
+                });
+    }
+
     public static void loadCategoties(final MyCompleteListener completeListener){
         g_catList.clear();
         g_frirestore.collection("QUIZ").get()

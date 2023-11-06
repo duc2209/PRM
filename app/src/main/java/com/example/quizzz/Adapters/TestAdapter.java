@@ -1,4 +1,4 @@
-package com.example.quizzz;
+package com.example.quizzz.Adapters;
 
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -9,6 +9,11 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.quizzz.DbQuery;
+import com.example.quizzz.Models.TestModel;
+import com.example.quizzz.R;
+import com.example.quizzz.StartTestActivity;
 
 import java.util.List;
 
@@ -58,7 +63,7 @@ public class TestAdapter extends RecyclerView.Adapter<TestAdapter.ViewModel> {
                 @Override
                 public void onClick(View v) {
                     DbQuery.g_selected_test_index = pos;
-                    Intent intent = new Intent(itemView.getContext(),StartTestActivity.class);
+                    Intent intent = new Intent(itemView.getContext(), StartTestActivity.class);
                     itemView.getContext().startActivity(intent);
                 }
             });

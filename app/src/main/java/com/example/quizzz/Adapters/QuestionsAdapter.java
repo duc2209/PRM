@@ -1,4 +1,4 @@
-package com.example.quizzz;
+package com.example.quizzz.Adapters;
 
 import static com.example.quizzz.DbQuery.ANSWERED;
 import static com.example.quizzz.DbQuery.REVIEW;
@@ -13,6 +13,10 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.quizzz.DbQuery;
+import com.example.quizzz.Models.QuestionModel;
+import com.example.quizzz.R;
 
 import java.util.List;
 

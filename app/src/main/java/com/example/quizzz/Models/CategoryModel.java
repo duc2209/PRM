@@ -1,4 +1,4 @@
-package com.example.quizzz;
+package com.example.quizzz.Models;
 
 public class CategoryModel {
     private String docId;
