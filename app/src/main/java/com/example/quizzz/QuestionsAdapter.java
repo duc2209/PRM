@@ -1,5 +1,10 @@
 package com.example.quizzz;
 
+import static com.example.quizzz.DbQuery.ANSWERED;
+import static com.example.quizzz.DbQuery.REVIEW;
+import static com.example.quizzz.DbQuery.UNANSWERED;
+import static com.example.quizzz.DbQuery.g_quesList;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -92,11 +97,14 @@ public class QuestionsAdapter extends RecyclerView.Adapter<QuestionsAdapter.View
                 btn.setBackgroundResource(R.drawable.selected_btn);
                 DbQuery.g_quesList.get(quesID).setSelectedAns(option_num);
 
+                changeStatus(quesID, ANSWERED);
                 prevSelectedB = btn;
             } else {
                 if(prevSelectedB.getId() == btn.getId()) {
                     btn.setBackgroundResource(R.drawable.unselected_btn);
                     DbQuery.g_quesList.get(quesID).setSelectedAns(-1);
+
+                    changeStatus(quesID, UNANSWERED);
                     prevSelectedB = null;
                 }
                 else {
@@ -104,8 +112,17 @@ public class QuestionsAdapter extends RecyclerView.Adapter<QuestionsAdapter.View
                      btn.setBackgroundResource(R.drawable.selected_btn);
                      DbQuery.g_quesList.get(quesID).setSelectedAns(option_num);
 
+                     changeStatus(quesID, ANSWERED);
                      prevSelectedB = btn;
                 }
+            }
+        }
+
+        private void changeStatus(int id, int status)
+        {
+            if(g_quesList.get(id).getStatus() != REVIEW)
+            {
+                g_quesList.get(id).setStatus(status);
             }
         }
         private void setOption(Button btn, int option_num, int quesID)

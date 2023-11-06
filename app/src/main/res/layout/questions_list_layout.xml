@@ -129,6 +129,7 @@
     <GridView
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:id="@+id/ques_list_gv"
         android:gravity="center"
         android:columnWidth="60dp"
         android:numColumns="auto_fit"
@@ -147,6 +148,7 @@
         app:layout_constraintTop_toBottomOf="@id/divider"
 
         ></GridView>
+
     <ImageButton
         android:layout_width="30dp"
         android:layout_height="30dp"
