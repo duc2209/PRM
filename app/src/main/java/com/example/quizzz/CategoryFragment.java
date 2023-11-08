@@ -2,6 +2,7 @@ package com.example.quizzz;
 
 import android.os.Bundle;
 
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -67,6 +68,9 @@ public class CategoryFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_category,container,false);
+        Toolbar toolbar = getActivity().findViewById(R.id.toolbar);
+        ((MainActivity)getActivity()).getSupportActionBar().setTitle("Categories");
+
         catView = view.findViewById(R.id.cat_Gird);
 
         //loadCategories();

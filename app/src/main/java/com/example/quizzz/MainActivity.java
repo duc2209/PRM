@@ -5,6 +5,7 @@ import android.view.View;
 import android.view.Menu;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationBarView;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 
@@ -24,6 +25,7 @@ import com.example.quizzz.databinding.ActivityMainBinding;
 import androidx.annotation.NonNull;
 import android.view.MenuItem;
 import android.widget.FrameLayout;
+import android.widget.Switch;
 import android.widget.TextView;
 
 import com.example.quizzz.R;
@@ -41,20 +43,28 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             = new BottomNavigationView.OnItemSelectedListener() {
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-            int id = item.getItemId();
-            if (id == R.id.navigation_home) {
+              int id = item.getItemId();
+//            if (id == R.id.nav_home) {
+//                setFragement(new CategoryFragment());
+//                return true;
+//            }
+//            if (id == R.id.nav_leaderboard) {
+//                setFragement(new LeaderBoardFragment());
+//                return true;
+//            }
+//            if (id == R.id.nav_account) {
+//                setFragement(new AccountFragment());
+//                return true;
+//            }
+            if(id == R.id.nav_home){
                 setFragement(new CategoryFragment());
-                return true;
-            }
-            if (id == R.id.navigation_leaderboard) {
-                setFragement(new LeaderBoardFragment());
-                return true;
-            }
-            if (id == R.id.navigation_account) {
+            }else if(id == R.id.nav_account){
                 setFragement(new AccountFragment());
-                return true;
             }
-            return false;
+            else if(id == R.id.nav_leaderboard){
+                setFragement(new LeaderBoardFragment());
+            }
+            return true;
         }
     };
 
@@ -64,6 +74,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayShowTitleEnabled(true);
+        getSupportActionBar().setTitle("Categories");
 
         bottomNavigationView = findViewById(R.id.bottom_nav_bar);
         main_frame = findViewById(R.id.main_frame);
@@ -106,9 +118,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }else if(id == R.id.nav_account){
             setFragement(new AccountFragment());
         }
-        else if(id == R.id.nav_leaderboard){
-            setFragement(new LeaderBoardFragment());
-        }
+//        else if(id == R.id.nav_leaderboard){
+//            setFragement(new LeaderBoardFragment());
+//        }
         // else if(id == R.id.nav_share){
 
         //}else if(id == R.id.nav_send){
