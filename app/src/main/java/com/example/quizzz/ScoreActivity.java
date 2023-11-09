@@ -34,7 +34,7 @@ public class ScoreActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(true);
 
-        //nt cat_index = DbQuery.g_catList.get(DbQuery.g_select_cat_index)
+
         getSupportActionBar().setTitle("Result");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
@@ -54,7 +54,9 @@ public class ScoreActivity extends AppCompatActivity {
         viewAnsB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent intent = new Intent(ScoreActivity.this,AnswersActivity.class);
+                startActivity(intent);
+                finish();
             }
         });
 

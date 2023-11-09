@@ -44,25 +44,17 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
               int id = item.getItemId();
-//            if (id == R.id.nav_home) {
-//                setFragement(new CategoryFragment());
-//                return true;
-//            }
-//            if (id == R.id.nav_leaderboard) {
-//                setFragement(new LeaderBoardFragment());
-//                return true;
-//            }
-//            if (id == R.id.nav_account) {
-//                setFragement(new AccountFragment());
-//                return true;
-//            }
-            if(id == R.id.nav_home){
+            if (id == R.id.navigation_home) {
                 setFragement(new CategoryFragment());
-            }else if(id == R.id.nav_account){
-                setFragement(new AccountFragment());
+                return true;
             }
-            else if(id == R.id.nav_leaderboard){
+            if (id == R.id.navigation_leaderboard) {
                 setFragement(new LeaderBoardFragment());
+                return true;
+            }
+            if (id == R.id.navigation_account) {
+                setFragement(new AccountFragment());
+                return true;
             }
             return true;
         }
