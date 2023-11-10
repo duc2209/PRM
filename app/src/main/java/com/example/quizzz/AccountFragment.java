@@ -1,5 +1,6 @@
 package com.example.quizzz;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.appcompat.widget.Toolbar;
@@ -105,7 +106,8 @@ public class AccountFragment extends Fragment {
         profilrB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent intent = new Intent(getContext(),MyProfileActivity.class);
+                startActivity(intent);
             }
         });
         leaderB.setOnClickListener(new View.OnClickListener() {

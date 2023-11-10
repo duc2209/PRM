@@ -22,5 +22,8 @@
     <style name="Theme.Quizzz.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="Theme.Quizzz.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
     <style name="AppTheme" parent="android:Theme.Material.Light.NoActionBar" />
+
+    <style name="AppTheme12" parent="android:Theme.Material.Light.NoActionBar" />
 </resources>

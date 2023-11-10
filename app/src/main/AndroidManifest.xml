@@ -12,6 +12,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme1">
         <activity
+            android:name=".MyProfileActivity"
+            android:exported="false"
+            android:label="@string/title_activity_my_profile"
+            android:theme="@style/AppTheme1" />
+        <activity
             android:name=".ScoreActivity"
             android:exported="false" />
         <activity
